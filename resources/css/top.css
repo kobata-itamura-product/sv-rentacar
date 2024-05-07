@@ -1,0 +1,131 @@
+    body {
+        background-color: white;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+
+    }
+
+    li{
+        list-style:none;
+      }
+
+    .wrapper {
+        display: block;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    header {
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+
+    .fstView {
+        display: block;
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .FV-hero {
+        display: block;
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .fstView-keyvisual {
+        display: block;
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .rentacar {
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .rentacar-box__img {
+        position: relative;
+    }
+
+    .rentacar-box__img p {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+    }
+
+    .rentacar-box__ttl {
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .rentacar-box__tbl {
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .rentacar-box__img {
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .rentacar-box__tap {
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .content {
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .sns-bnr {
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .footerInner {
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    .btm-fixed {
+        position: relative;
+        margin-left: auto;
+	    margin-right: auto;
+        text-align: center;
+    }
+
+    @media (max-width: 1020px) and (min-width: 768px) {
+        
+    }
+     
+    @media (max-width: 767px) {
+         
+    }
