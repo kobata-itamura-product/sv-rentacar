@@ -1,5 +1,5 @@
 <!doctype html>
-<link rel="stylesheet" href="/SV_rentacar/resources/css/top.css">
+<link rel="stylesheet" href="/sv-rentacar/resources/css/top.css">
 <html lang="ja" style="height: 100%;"><head>
     <!-- Google Tag Manager -->
     <script type="text/javascript" src="https://pi.pardot.com/pd.js"></script><script type="text/javascript" async="" id="fjssync" src="https://hm.mieru-ca.com/service/js/mieruca-hm.js?v=1712030383509"></script><script src="https://connect.facebook.net/signals/config/456180551471938?v=2.9.151&amp;r=stable&amp;domain=sky-timeless.com&amp;hme=8ce74e881727851b4427183947937854816d72704925561b9de6420cd43214ee&amp;ex_m=66%2C111%2C98%2C102%2C57%2C3%2C92%2C65%2C15%2C90%2C83%2C48%2C50%2C157%2C160%2C171%2C167%2C168%2C170%2C28%2C93%2C49%2C72%2C169%2C152%2C155%2C164%2C165%2C172%2C120%2C14%2C47%2C176%2C175%2C122%2C17%2C32%2C36%2C1%2C40%2C61%2C62%2C63%2C67%2C87%2C16%2C13%2C89%2C86%2C85%2C99%2C101%2C35%2C100%2C29%2C25%2C153%2C156%2C129%2C27%2C10%2C11%2C12%2C5%2C6%2C24%2C21%2C22%2C53%2C58%2C60%2C70%2C94%2C26%2C71%2C8%2C7%2C75%2C45%2C20%2C96%2C95%2C9%2C19%2C18%2C77%2C82%2C44%2C43%2C81%2C37%2C39%2C80%2C52%2C78%2C31%2C41%2C34%2C69%2C0%2C88%2C4%2C84%2C76%2C79%2C2%2C33%2C59%2C38%2C97%2C42%2C74%2C64%2C103%2C56%2C55%2C30%2C91%2C54%2C51%2C46%2C73%2C68%2C23%2C104" async=""></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script type="text/javascript" async="" src="https://s.yimg.jp/images/listing/tool/cv/ytag.js"></script><script type="text/javascript" async="" src="https://s.yimg.jp/images/listing/tool/cv/ytag.js"></script><script type="text/javascript" async="" src="https://s.yimg.jp/images/listing/tool/cv/ytag.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/destination?id=AW-682009071&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-J9TFMDN4M8&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-W2D5HWF"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -14,25 +14,25 @@
     <meta name="description" content="株式会社SVサポートが運営する、輸入車のレンタカーサービス。BMW、ポルシェ、ジャガー、ランドローバー、マセラティなどの輸入車のレンタカーならお任せください。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <link rel="canonical" href="https://SV_rentacar/resources/views/top.blade.php">
+    <link rel="canonical" href="https://sv-rentacar/resources/views/top.blade.php">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/SV_rentacar/assets/ico/apple-touch-icon.png">
-    <link rel="stylesheet" type="text/css" href="/SV_rentacar/assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/SV_rentacar/assets/css/screen.css">
-    <link rel="stylesheet" type="text/css" href="/SV_rentacar/assets/css/media.css">
-    <link rel="stylesheet" type="text/css" href="/SV_rentacar/assets/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="/SV_rentacar/assets/slick/slick-theme.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/sv-rentacar/assets/ico/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="/sv-rentacar/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/sv-rentacar/assets/css/screen.css">
+    <link rel="stylesheet" type="text/css" href="/sv-rentacar/assets/css/media.css">
+    <link rel="stylesheet" type="text/css" href="/sv-rentacar/assets/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="/sv-rentacar/assets/slick/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="mailform4/mailform/mfp.statics/mailformpro.css">
-    <link rel="stylesheet" type="text/css" href="/SV_rentacar/assets/css/mailform.css">
+    <link rel="stylesheet" type="text/css" href="/sv-rentacar/assets/css/mailform.css">
     <!-- Magnific Popup core CSS file -->
-    <link rel="stylesheet" href="/SV_rentacar/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/sv-rentacar/assets/css/magnific-popup.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     
     <script type="text/javascript" src="assets/js/jquery-1.9.1.min.js"></script>
     <!-- Magnific Popup core JS file -->
     <script src="assets/js/jquery.magnific-popup.js"></script>
-    <script type="text/javascript" src="/SV_rentacar/assets/slick/slick.min.js"></script>
-    <script type="text/javascript" src="/SV_rentacar/assets/js/function.js"></script>
+    <script type="text/javascript" src="/sv-rentacar/assets/slick/slick.min.js"></script>
+    <script type="text/javascript" src="/sv-rentacar/assets/js/function.js"></script>
     <link type="text/css" rel="stylesheet" charset="UTF-8" href="https://www.gstatic.com/_/translate_http/_/ss/k=translate_http.tr.qhDXWpKopYk.L.W.O/am=wA/d=0/rs=AN8SPfq5gedF4FIOWZgYyMCNZA5tU966ig/m=el_main_css"><script type="text/javascript" charset="UTF-8" src="https://translate.googleapis.com/_/translate_http/_/js/k=translate_http.tr.ja.uNMjpcPUiko.O/am=AAQ/d=1/exm=el_conf/ed=1/rs=AN8SPfoERlpbL0F789bYrhqoIR21t5DQBQ/m=el_main"></script><script type="text/javascript" src="https://b99.yahoo.co.jp/pagead/conversion_async.js"></script><script type="text/javascript" async="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/682009071/?random=1712030383155&amp;cv=11&amp;fst=1712030383155&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be4410v9166739880z8830315046za201&amp;gcd=13l3l3l3l1&amp;dma=0&amp;u_w=1920&amp;u_h=1080&amp;url=https%3A%2F%2Fsky-timeless.com%2Frentacar%2F&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=SKY%20GROUP%E3%81%AE%E9%AB%98%E7%B4%9A%E8%BC%B8%E5%85%A5%E8%BB%8A%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%AB%E3%83%BC%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%20%7C%20SKY%20GROUP&amp;npa=0&amp;pscdl=noapi&amp;auid=220546929.1712018801&amp;uaa=x86&amp;uab=64&amp;uafvl=Google%2520Chrome%3B123.0.6312.86%7CNot%253AA-Brand%3B8.0.0.0%7CChromium%3B123.0.6312.86&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;fledge=1&amp;rfmt=3&amp;fmt=4"></script><script type="text/javascript" src="https://pi.pardot.com/analytics?ver=3&amp;visitor_id=511206016&amp;visitor_id_sign=03b8a5016aa462439ea4de630230035db60e8c10027ea2ddbc7a1aa4990136af312007f14bf1e00b18766251f96f2c53a5d5224c&amp;pi_opt_in=&amp;campaign_id=1508&amp;account_id=882152&amp;title=SKY%20GROUP%E3%81%AE%E9%AB%98%E7%B4%9A%E8%BC%B8%E5%85%A5%E8%BB%8A%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%AB%E3%83%BC%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%20%7C%20SKY%20GROUP&amp;url=https%3A%2F%2Fsky-timeless.com%2Frentacar%2F&amp;referrer=https%3A%2F%2Fwww.google.com%2F"></script><script type="text/javascript" src="https://form.sky-g.org/analytics?conly=true&amp;visitor_id=511206016&amp;visitor_id_sign=03b8a5016aa462439ea4de630230035db60e8c10027ea2ddbc7a1aa4990136af312007f14bf1e00b18766251f96f2c53a5d5224c&amp;pi_opt_in=&amp;campaign_id=1508&amp;account_id=882152&amp;title=株式会社サーバントップの高級輸入車レンタカーサービス | SERVANTOP&amp;url=https://servantop.co.jp/&amp;referrer=https://www.google.com/"></script></head>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
@@ -48,7 +48,7 @@
         <header id="header">
           <h1>
             <a href="https://SVsuport.co.jp/" title="株式会社SVサポート/SVsuport">
-              <img src="/SV_rentacar/assets/images/SVサポートロゴ.png" srcset="/SV_rentacar/assets/images/SVサポートロゴ.png 1x, /SV_rentacar/assets/images/SVサポートロゴ.png 2x" alt="株式会社サーバントップ/SEVANTOP">
+              <img src="/sv-rentacar/assets/images/SVサポートロゴ.png" srcset="/sv-rentacar/assets/images/SVサポートロゴ.png 1x, /sv-rentacar/assets/images/SVサポートロゴ.png 2x" alt="株式会社サーバントップ/SEVANTOP">
             </a>
             <style>
               h1. {
@@ -57,8 +57,8 @@
             </style>
           </h1>
           <h2>
-            <a href="/SV_rentacar/resources/views/index.blade.php" title="SV RENTACAR">
-              <img src="/SV_rentacar/assets/images/屋号ロゴ.png" srcset="/SV_rentacar/assets/images/屋号ロゴ.png 1x, /SV_rentacar/assets/images/屋号ロゴ.png 2x" alt="SV_RENTACAR">
+            <a href="/sv-rentacar/resources/views/index.blade.php" title="SV RENTACAR">
+              <img src="/sv-rentacar/assets/images/屋号ロゴ.png" srcset="/sv-rentacar/assets/images/屋号ロゴ.png 1x, /sv-rentacar/assets/images/屋号ロゴ.png 2x" alt="sv-RENTACAR">
             </a>
             <style>
               h2. {
@@ -76,9 +76,9 @@
                 <div class="swiper-container">
                   <div class="swiper-wrapper">
                      <!-- スライドたち-->
-                     <div class="swiper-slide"><img src="/SV_rentacar/storage/images/マセラッティ車両_top.png" alt="高級輸入車専門レンタカー「SVサポート運営 SV RENTACAR」" class="FV-hero hero__pc"></div>
-                     <div class="swiper-slide"><img src="/SV_rentacar/storage/images/ポルシェ車両_top.png" alt="高級輸入車専門レンタカー「SVサポート運営 SV RENTACAR」" class="FV-hero hero__pc"></div>
-                     <div class="swiper-slide"><img src="/SV_rentacar/storage/images/BMW車両_top.png" alt="高級輸入車専門レンタカー「SVサポート運営 SV RENTACAR」" class="FV-hero hero__pc"></div>
+                     <div class="swiper-slide"><img src="/sv-rentacar/storage/images/マセラッティ車両_top.png" alt="高級輸入車専門レンタカー「SVサポート運営 SV RENTACAR」" class="FV-hero hero__pc"></div>
+                     <div class="swiper-slide"><img src="/sv-rentacar/storage/images/ポルシェ車両_top.png" alt="高級輸入車専門レンタカー「SVサポート運営 SV RENTACAR」" class="FV-hero hero__pc"></div>
+                     <div class="swiper-slide"><img src="/sv-rentacar/storage/images/BMW車両_top.png" alt="高級輸入車専門レンタカー「SVサポート運営 SV RENTACAR」" class="FV-hero hero__pc"></div>
                      <style>
                        .swiper-wrapper{
                          img { width: 100vw; }
@@ -97,7 +97,7 @@
                   <!-- JSを追加-->
                   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
                   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-                  <!--<script src="/SV_rentacar/resources/js/top.js"></script>-->
+                  <!--<script src="/sv-rentacar/resources/js/top.js"></script>-->
                   <!-- SwiperJSの初期設定を追記--> 
                   <script>
                     const mySwiper = new Swiper('.swiper-container', {
@@ -226,22 +226,22 @@
                   下記メーカーロゴマークよりお進みください。</p>
                 <ul class="flexbox FB-Brand">
                   <li class="brand-teaser">
-                    <a href="/SV_rentacar/resources/views/show.blade.php"><img src='/SV_rentacar/storage/images/maker_button/マセラッティ.png'></a>
+                    <a href="/sv-rentacar/resources/views/show.blade.php"><img src='/sv-rentacar/storage/images/maker_button/マセラッティ.png'></a>
                   </li>
                   <li class="brand-teaser">
-                    <a href="#porsche"><img src='/SV_rentacar/storage/images/maker_button2/PORSCHEロゴ.png'></a>
+                    <a href="#porsche"><img src='/sv-rentacar/storage/images/maker_button2/PORSCHEロゴ.png'></a>
                   </li>
                   <li class="brand-teaser">
-                    <a href="#bmw"><img src='/SV_rentacar/storage/images/maker_button3/BMWロゴ.png'></a>
+                    <a href="#bmw"><img src='/sv-rentacar/storage/images/maker_button3/BMWロゴ.png'></a>
                   </li>
                   <!--li class="brand-teaser">
                     <a href="#jaguar"><span>JAGUAR</span><i class="fas fa-angle-down"></i></a>
                   </li-->
                   <li class="brand-teaser">
-                    <a href="#audi"><img src='/SV_rentacar/storage/images/maker_button4/Audiロゴ.png'></a>
+                    <a href="#audi"><img src='/sv-rentacar/storage/images/maker_button4/Audiロゴ.png'></a>
                   </li>
                   <li class="brand-teaser">
-                    <a href="#benz"><img src='/SV_rentacar/storage/images/maker_button5/Mercedes-Benzロゴ.png'></a>
+                    <a href="#benz"><img src='/sv-rentacar/storage/images/maker_button5/Mercedes-Benzロゴ.png'></a>
                   </li>
                   <style>
                     .brand-teaser {
@@ -345,8 +345,8 @@
                         <ul class="ul_summary">
                             <li>営業時間：9:00-18:00</li>
                             <li>定休日：無し（夏期休暇・年末年始を除く）</li>
-                            <li>URL：<a href="https://SV_RENTACAR.com/" target="_blank">www.SV_RENTACAR.com</a></li>
-                            <li>Mail：<script type="text/javascript">mailadress("SV_rentacar", "SVsuport.org");</script><a href="mailto:SV_rentacar@SVsuport.org">SV_rentacar@SVsuport.org</a></li>
+                            <li>URL：<a href="https://sv-RENTACAR.com/" target="_blank">www.sv-RENTACAR.com</a></li>
+                            <li>Mail：<script type="text/javascript">mailadress("sv-rentacar", "SVsuport.org");</script><a href="mailto:sv-rentacar@SVsuport.org">sv-rentacar@SVsuport.org</a></li>
                             <li>レンタカー許可申請番号：東運輸第****号</li>
                             <li>〒581-0055 大阪府八尾市跡部南の町２－１－１５</li>
                         </ul>
@@ -375,10 +375,10 @@
         
         <div class="sns-bnr">
           <p class="sns-bnr__item">
-            <a class="sns-bnr__link" href="https://www.facebook.com/SVrentacar" target="_blank"><img src="./assets/images/sns_bnr_fb.png" width="600" height="140" alt="facebook"></a>
+            <a class="sns-bnr__link" href="https://www.facebook.com/servantop" target="_blank"><img src="/sv-rentacar/assets/images/sns_bnr_fb.png" width="600" height="140" alt="facebook"></a>
           </p>
           <p class="sns-bnr__item">
-            <a class="sns-bnr__link" href="https://www.instagram.com/SVrentacar/" target="_blank"><img src="./assets/images/sns_bnr_insta.png" width="600" height="140" alt="instagram"></a>
+            <a class="sns-bnr__link" href="https://www.instagram.com/servantop_recruit/" target="_blank"><img src="/sv-rentacar/assets/images/sns_bnr_insta.png" width="600" height="140" alt="instagram"></a>
           </p>
         </div>
     
@@ -392,7 +392,7 @@
         <footer id="footer">
             <div class="footerInner">
                 <ul>
-                    <li><a target="_blank" href="http://www.sky-g.org/" onclick="ga('send', 'event', 'outbound', 'foot_sky');">SKYグループ</a></li>
+                    <li><a target="_blank" href="http://www.sky-g.org/" onclick="ga('send', 'event', 'outbound', 'foot_sky');">SVサポート</a></li>
                     <li><a target="_blank" href="http://www.sky-g.org/privacy/" onclick="ga('send', 'event', 'outbound', 'foot_sky_policy');">プライバシーポリシー</a></li>
                     <li id="language">
                         <a>Language</a>

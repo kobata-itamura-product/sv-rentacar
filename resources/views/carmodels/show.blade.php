@@ -79,7 +79,7 @@
                           <table class="rentacar-box__tbl">
                             <tbody><tr>
                               <th>モデル名</th>
-                              <td>{{ $car_model->model_name }}（ホワイト）</td>
+                              <td>{{ $carmodels->model_name }}（ホワイト）</td>
                             </tr>
                             <tr>
                               <th>当日返却プラン</th>

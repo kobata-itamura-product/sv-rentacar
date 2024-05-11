@@ -14,19 +14,19 @@ class Carmodel extends Model
     // ダミーレコードを代入する機能を使うことを宣言しています。
     use HasFactory;
 
-    protected $table = 'car_model';
+    protected $table = 'carmodels';
 
-    protected $primaryKey = 'model_id','maker_id';
+    //protected $primaryKey = 'id';
 
     // 以下の情報（属性）を一度に保存したり変更したりできるように設定しています。
     // $fillable を設定しないと、Laravelはセキュリティリスクを避けるために、この一括代入をブロックします。
     protected $fillable = [
-        'model_id',
+        'id',
         'model_name',
-        'maker_id',
-        /*'price_24h',
+        //'maker_id',
+        'price_24h',
         'color',
-        'capacity',
+        /*'capacity',
         'handle',
         'displacement',
         'fuel',

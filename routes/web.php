@@ -1,14 +1,14 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PhotoController;
+namespace App\Http\Controllers\CarmodelController;
+namespace Illuminate\Support\Facades;
+//use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\CarmodelController;
-use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\Auth;
 use App\Models\Carmodel;
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 /*require __DIR__.'/auth.php';*/
 
@@ -25,12 +25,12 @@ Route::get('/', function () {
 // ルートが作成されます。
 //　つまりログイン画面に用意されたビューのリンク先がこの1行で済みます*/
 
-Route::get('/create', 'App\Http\Controllers\CarmodelController@create');
-Route::post('/index', 'App\Http\Controllers\CarmodelController@store');
+//Route::get('/carmodels/create', 'CarmodelController@create');
+//Route::post('/carmodels/index', 'CarmodelController@store');
 
-/*Route::group(['middleware' => 'auth'], function () {
-    Route::resource('./resources/views',CarmodelController::class);
-});*/
+//Route::group(['middleware' => 'auth'], function () {
+    //Route::resource('./resources/views',CarmodelController::class);
+//});
 /*Auth::routes();*/
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/*Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/

@@ -1,0 +1,32 @@
+    .first_img {
+        position: relative;
+    }
+
+    .first_img p img {
+        position: absolute;
+        top: -50px;
+        right: 450px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .first_img p2 img {
+        position: absolute;
+        top: 16px;
+        right: 560px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .rentacar-box__flex{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .rentacar-box__item{
+        width: 50%;   
+    }
+
+    .rentacar-box__imgs img{
+        width: 25%;
+    }
