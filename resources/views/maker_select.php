@@ -1,5 +1,18 @@
+<?php
+session_start();
+$_SESSION['selected_menu'] = 'selected_menu';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['selected_menu'])) {
+        // 選択されたメニューの値をセッションに保存
+        $_SESSION['selected_menu'] = $_POST['selected_menu'];
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
+
+
 
 <head>
 
@@ -344,10 +357,35 @@
 
 </script>
 
-  <meta charset="utf-8">
-  <title>メーカー選択画面</title>
+<?php
+ini_set('display_errors', true);
+error_reporting(E_ALL);
+
+require 'database.php';
+
+// DB接続
+$pdo = connect();
+
+// ステートメント
+$sql = "SELECT * FROM makers";
+$resultset = $pdo -> query($sql);
+//$resultset->prepare($sql);
+$resultset->execute();
+$resultset->fetch(PDO::FETCH_ASSOC);
+$data = "";
+foreach ($resultset as $data_val) {
+    $data .= "<option value='". $data_val['maker_id'];
+    $data .= "'>". $data_val['maker_name']. "</option>";
+}
+
+
+?>
+
+<meta charset="utf-8">
+<title>メーカー選択画面</title>
   
 </head>
+
 <body>
 <h1>メーカー選択画面</h1>
 
@@ -361,26 +399,21 @@
 
 
        <form  method = "POST">
-            <select name= "Jcar">
-			  <option value = "Maserati">Maserati</option>
-              <option value = "Toyota">Toyota</option>
-              <option value = "Nissan">Nissan</option>
-              <option value = "Daihatsu">Daihatsu</option>
+            <select name= "selected_menu">
+			<?php
+              echo $data;
+			  $selected_data = $_POST["selected_menu"];
+              echo $selected_data;
+			?>
             </select>
-
 
             <div class="submit1" >
                 <input type="submit" name="add" value="新規登録" formaction="/sv-rentacar/resources/views/carmodels/create.blade.php"/>
             </div>
 
-
             <div class="submit2" >
-
 			    <input type="submit" name="edit" value="編集" formaction="edit.php"/>
-
             </div>
-
-        
        </form>
   </div>
 

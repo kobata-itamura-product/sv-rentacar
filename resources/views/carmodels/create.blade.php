@@ -3,19 +3,42 @@
   error_reporting(E_ALL);
 
   session_start();
+  //$_SESSION['selected_menu'] = 'selected_menu';
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_SESSION['selected_menu'])) {
+        // 選択されたメニューの値をセッションに保存
+        $_SESSION['selected_menu'] = $_POST['selected_menu'];
+    }
+  }
 
   require 'database2.php';
 
   $err = [];
 
+  $maker_id = $_POST["selected_menu"];
+  var_dump($maker_id);
     // 「登録」ボタンが押されて、POST通信のとき
   if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST') {
   $model_name = filter_input(INPUT_POST, 'model_name');
   $color = filter_input(INPUT_POST, 'color');
   $price_24h = filter_input(INPUT_POST, 'price_24h');
+  $capacity = filter_input(INPUT_POST, 'capacity');
+  $handle = filter_input(INPUT_POST, 'handle');
+  $displacement = filter_input(INPUT_POST, 'displacement');
+  $fuel = filter_input(INPUT_POST, 'fuel');
+  $size_l = filter_input(INPUT_POST, 'size_l');
+  $size_w = filter_input(INPUT_POST, 'size_w');
+  $size_h = filter_input(INPUT_POST, 'size_h');
+  $insurance_deductible_property = filter_input(INPUT_POST, 'insurance_deductible_property');
+  $insurance_deductible_vehicle = filter_input(INPUT_POST, 'insurance_deductible_vehicle');
+  $noc_self_propelled = filter_input(INPUT_POST, 'noc_self_propelled');
+  $noc_not_self_drive = filter_input(INPUT_POST, 'noc_not_self_drive');
+  $model_year = filter_input(INPUT_POST, 'model_year');
+  $remarks = filter_input(INPUT_POST, 'remarks');
 
     if ($model_name === '') {
-        $err['model_name'] = 'ユーザー名は入力必須です。';
+        $err['model_name'] = 'モデル名は入力必須です。';
     }
     if ($color === '') {
         $err['color'] = '車体色は入力必須です。';
@@ -23,25 +46,79 @@
     if ($price_24h === '') {
         $err['price_24h'] = '24時間利用料金は入力必須です。';
     }
+    if ($capacity === '') {
+        $err['capacity'] = '定員は入力必須です。';
+    }
+    if ($handle === '') {
+        $err['handle'] = 'ハンドルは入力必須です。';
+    }
+    if ($displacement === '') {
+        $err['displacement'] = '排気量は入力必須です。';
+    }
+    if ($fuel === '') {
+        $err['fuel'] = '燃料は入力必須です。';
+    }
+    if ($size_l === '') {
+        $err['size_l'] = '全長は入力必須です。';
+    }
+    if ($size_w === '') {
+        $err['size_w'] = '全幅は入力必須です。';
+    }
+    if ($size_h === '') {
+        $err['size_h'] = '全高は入力必須です。';
+    }
+    if ($insurance_deductible_property === '') {
+        $err['insurance_deductible_property'] = '保険免責金額(対物)は入力必須です。';
+    }
+    if ($insurance_deductible_vehicle === '') {
+        $err['insurance_deductible_vehicle'] = '保険免責金額(車両)は入力必須です。';
+    }
+    if ($noc_self_propelled === '') {
+        $err['noc_self_propelled'] = 'ノンオペレーションチャージ(自走可能)は入力必須です。';
+    }
+    if ($noc_not_self_drive === '') {
+        $err['noc_not_self_drive'] = 'ノンオペレーションチャージ(自走不可能)は入力必須です。';
+    }
+    if ($model_year === '') {
+        $err['model_year'] = '年式は入力必須です。';
+    }
+    if ($remarks === '') {
+        $err['remarks'] = '備考は入力必須です。';
+    }
 
-    if (count($err) === 0) {
+    /*if (count($err) === 0) {
 
       // DB接続
       $pdo = connect();
 
       // ステートメント
-      $stmt = $pdo->prepare('INSERT INTO carmodels (id, model_name, color,price_24h) VALUES (null, ?, ?, ?)');
+      $stmt = $pdo->prepare('INSERT INTO carmodels (id,maker_id,model_name,color,price_24h,capacity,handle,displacement,fuel,size_l,size_w,size_h,insurance_deductible_property,insurance_deductible_vehicle,noc_self_propelled,noc_not_self_drive,model_year,remarks) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
 
       // パラメータ設定
       $params = [];
+      $params[] = $maker_id;
       $params[] = $model_name;
       $params[] = $color;
       $params[] = $price_24h;
-      //dd();
+      $params[] = $capacity;
+      $params[] = $handle;
+      $params[] = $displacement;
+      $params[] = $fuel;
+      $params[] = $size_l;
+      $params[] = $size_w;
+      $params[] = $size_h;
+      $params[] = $insurance_deductible_property;
+      $params[] = $insurance_deductible_vehicle;
+      $params[] = $noc_self_propelled;
+      $params[] = $noc_not_self_drive;
+      $params[] = $model_year;
+      $params[] = $remarks;
+
+      //dd($stmt);
       // SQL実行
       $stmt->execute($params);
-    
-    }
+      
+    }*/
   }
 ?>
 
@@ -144,199 +221,224 @@
           </h2>
           </header>
 
-          <!--マセラティ
-          <section id="maserati" class="rentacar-box">-->
+          <!--マセラティ-->
+                  <section id="maserati" class="rentacar-box">
                     <div class="rentacar-box__head">
                       <h2 class="rentacar-box__ttl">
                         <?php
-	                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		                          $maker = $_POST["Jcar"];
-		                          echo "{$maker}";
-	                        }
+                          //session_start();
+                          // 例: $_POST["selected_menu"] からメーカーIDを受け取る
+                          $selectedMenuId = $_POST["selected_menu"];
+
+                          // データベース接続
+                          $pdo = connect(); // connect関数はあなたのデータベース接続をセットアップする関数です
+
+                          // メーカーIDを使ってメーカー名を取得するクエリを準備
+                          $stmt = $pdo->prepare("SELECT maker_name FROM makers WHERE maker_id = :maker_id");
+                          $stmt->bindValue(':maker_id', $selectedMenuId, PDO::PARAM_INT);
+
+                          // クエリの実行
+                          $stmt->execute();
+
+                          // 結果のフェッチ
+                          $makerNameRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                          if ($makerNameRow) {
+                              $makerName = $makerNameRow['maker_name'];
+                              echo $makerName;
+                          } else {
+                              echo "メーカーが見つかりませんでした。";
+                          }
+
+                          
+
                         ?>
                       </h2>
                     </div>
                     <div class="rentacar-box__flex">
                       <div class="rentacar-box__item">
-                        <div class="rentacar-box__img">
-                          <div class="first_img">
-                            <img src="/sv-rentacar/storage/images/マセラッティ車両.png" alt=""><p><img src="/sv-rentacar/assets/images/360カメラ.png" alt=""></p><p2><img src="/sv-rentacar/assets/images/バックモニター.png" alt=""></p2>
-                          </div>
-                          <div class="rentacar-box__imgs">
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-2.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-2.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-3.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-3.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-4.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-4.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-5.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-5.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-6.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-6.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-7.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-7.jpg" alt=""></a>
-                          </div>
-                        </div>
-                        <form method="post" action="create.blade.php">
-                          
-                          <input type="hidden" name="_token" value="{{ csrf_token() }}" >
-                          <label for="model_name" class="form-label">モデル名:</label>
-                          <input id="" type="text" name="model_name" class="form-control">
-                          
-                          <label for="color" class="form-label">車体色:</label>
-                          <input id="" type="text" name="color" class="form-control">
-                                  
-                          <label for="price_24h" class="form-label">24時間料金:</label>
-                          <input id="" type="text" name="price_24h" class="form-control">円
-                            
-                          <p class="rentacar-box__tap">Car SPEC</p>
-                          <div class="rentacar-box__toggle">
-                            <table class="rentacar-box__tbl">
-                              <tbody><tr><!--形状/ハンドルにfirst-childを適用しないため--></tr>
-                              <tr>
-                                <th>カラー／定員／ハンドル</th>
-                                <td>ホワイト／5名／左</td>
-                              </tr>
-                              <tr>
-                                <th>排気量／燃料</th>
-                                <td>2,980cc／ハイオク</td>
-                              </tr>
-                              <tr>
-                                <th colspan="2">サイズ（全長×全幅×全高）<br>4,970×1,940×1,480mm</th>
-                              </tr>
-                              <tr>
-                                <th colspan="2">保険免責金額<br>対物：50,000円　車両：100,000円</th>
-                              </tr>
-                              <tr>
-                                <th colspan="2">NOC(ノンオペレーションチャージ)<br>自走可能：80,000円　自走不可能：160,000円</th>
-                              </tr>
-                              <tr>
-                                <th colspan="2">備考<br>年式：2017年　装備：純正ナビ、ETC、バックカメラ、クルーズコントロール</th>
-                              </tr>
-                              </tbody>
-                            </table>
+                        <form method="POST">
+                          <div class="rentacar-box__img">
+                            <div class="first_img">
+                              <img src="/sv-rentacar/storage/images/マセラッティ車両.png" alt="">
+                              <div class="icon1">360度カメラ
+                                <input type="radio" name="camera360" value="1" onclick="hyoji()">表示
+                                <input type="radio" name="camera360" value="0" onclick="hihyoji()">非表示</div>
+                              <div class="icon2">バックモニター
+                                <input type="radio" name="back_monitor" value="1" onclick="hyoji2()">表示
+                                <input type="radio" name="back_monitor" value="0" onclick="hihyoji2()">非表示</div>
+                              <div class="icon3">NEW
+                                <input type="radio" name="new" value="1" onclick="hyoji3()">表示
+                                <input type="radio" name="new" value="0" onclick="hihyoji3()">非表示</div>
+                              <div class="option1" id="option1"><img src="/sv-rentacar/assets/images/360カメラ.png" alt=""></div>
+                              <div class="option2" id="option2"><img src="/sv-rentacar/assets/images/バックモニター.png" alt=""></div>
+                              <div class="new" id="new"><img src="/sv-rentacar/assets/images/NEW.png" alt=""></div>
+                              <script>
+                              function hyoji() {
+                                  document.getElementById("option1").style.display="block";
+                              }
+
+                              function hihyoji() {
+                                  document.getElementById("option1").style.display="none";
+                              }
+                              function hyoji2() {
+                                  document.getElementById("option2").style.display="block";
+                              }
+
+                              function hihyoji2() {
+                                  document.getElementById("option2").style.display="none";
+                              }
+                              function hyoji3() {
+                                  document.getElementById("new").style.display="block";
+                              }
+
+                              function hihyoji3() {
+                                  document.getElementById("new").style.display="none";
+                              }
+                              </script>
                             </div>
-                          <input type="submit" class="btn btn-primary" value=登録>
+                            <div class="rentacar-box__imgs">
+                              <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-2.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-2.jpg" alt=""></a>
+                              <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-3.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-3.jpg" alt=""></a>
+                              <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-4.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-4.jpg" alt=""></a>
+                              <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-5.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-5.jpg" alt=""></a>
+                              <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-6.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-6.jpg" alt=""></a>
+                              <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-7.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-7.jpg" alt=""></a>
+                            </div>
+                          </div>
+                          
+                            
+                            <table>
+
+                            <tr>
+                            <td>画像1 *メイン画像<input type="file" name="input1" id="input1" accept="image/*"></td>
+                                <td><figure id="figure1" style="display: none">
+                              <figcaption></figcaption>
+                              <img name="img1" src="" alt="" id="figureImage1" style="max-width: 200px">
+                                </figure>
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td>画像2<input type="file" name="input2" id="input2" accept="image/*"></td>
+                                <td><figure id="figure2" style="display: none">
+                              <figcaption></figcaption>
+                                    <img name="img2" src="" alt="" id="figureImage2" style="max-width: 200px">
+                                </figure>
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td>画像3<input type="file" name="input3" id="input3" accept="image/*"></td>
+                                <td><figure id="figure3" style="display: none">
+                              <figcaption></figcaption>
+                                    <img name="img3" src="" alt="" id="figureImage3" style="max-width: 200px">
+                                </figure>
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td>画像4<input type="file" name="input4" id="input4" accept="image/*"></td>
+                                <td><figure id="figure4" style="display: none">
+                              <figcaption></figcaption>
+                                    <img name="img4" src="" alt="" id="figureImage4" style="max-width: 200px">
+                                </figure>
+                            </td>
+                            </tr>
+
+
+                            <tr>
+                            <td>画像5<input type="file" name="input5" id="input5" accept="image/*"></td>
+                                <td><figure id="figure5" style="display: none">
+                              <figcaption></figcaption>
+                                    <img name="img5" src="" alt="" id="figureImage5" style="max-width: 200px">
+                                </figure>
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td>画像6<input type="file" name="input6" id="input6" accept="image/*"></td>
+                                <td><figure id="figure6" style="display: none">
+                              <figcaption></figcaption>
+                                    <img name="img6" src="" alt="" id="figureImage6" style="max-width: 200px">
+                                </figure>
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td>画像7<input type="file" name="input7" id="input7" accept="image/*"></td>
+                                <td><figure id="figure7" style="display: none">
+                              <figcaption></figcaption>
+                                    <img name="img7" src="" alt="" id="figureImage7" style="max-width: 200px">
+                                </figure>
+                            </td>
+                            </tr>
+                            </table>
+
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+                            <label for="model_name" class="form-label">モデル:</label>
+                            <input id="" type="text" name="model_name" class="form-control">
+                            
+                            <label for="color" class="form-label">色:</label>
+                            <input id="" type="text" name="color" class="form-control">
+                                    
+                            <label for="price_24h" class="form-label">24時間料金:</label>
+                            <input id="" type="text" name="price_24h" class="form-control">円
+                              
+                            <p class="rentacar-box__tap">Car SPEC</p>
+
+                            <div class="rentacar-box__toggle">
+
+                              <label for="capacity" class="form-label">定員:</label>
+                              <input id="" type="text" name="capacity" class="form-control">
+                                      
+                              <label for="handle" class="form-label">ハンドル:</label>
+                              <input id="" type="text" name="handle" class="form-control">
+
+                              <label for="displacement" class="form-label">排気量:</label>
+                              <input id="" type="text" name="displacement" class="form-control">
+                                      
+                              <label for="fuel" class="form-label">燃料:</label>
+                              <input id="" type="text" name="fuel" class="form-control">
+
+                              <label for="size_l" class="form-label">全長:</label>
+                              <input id="" type="text" name="size_l" class="form-control">
+
+                              <label for="size_w" class="form-label">全幅:</label>
+                              <input id="" type="text" name="size_w" class="form-control">
+
+                              <label for="size_h" class="form-label">全高:</label>
+                              <input id="" type="text" name="size_h" class="form-control">
+
+                              <label for="insurance_deductible_property" class="form-label">保険免責金額(対物):</label>
+                              <input id="" type="text" name="insurance_deductible_property" class="form-control">
+
+                              <label for="insurance_deductible_vehicle" class="form-label">保険免責金額(車両):</label>
+                              <input id="" type="text" name="insurance_deductible_vehicle" class="form-control">
+                                    
+                              <label for="noc_self_propelled" class="form-label">NOC(ノンオペレーションチャージ)自走可能:</label>
+                              <input id="" type="text" name="noc_self_propelled" class="form-control">
+
+                              <label for="noc_not_self_drive" class="form-label">NOC(ノンオペレーションチャージ)自走不可能:</label>
+                              <input id="" type="text" name="noc_not_self_drive" class="form-control">
+                              
+                              <label for="model_year" class="form-label">年式:</label>
+                              <input id="" type="text" name="model_year" class="form-control">
+
+                              <label for="remarks" class="form-label">備考:</label>
+                              <input id="" type="textarea" name="remarks" class="form-control">
+                                
+                            </div>
+                            <input type="submit" class="btn btn-primary" value=登録 formaction="show.blade.php">
+                            
                         </form>  
                         
                       </div>
                       
-                      <div class="rentacar-box__item">
-                        <div class="rentacar-box__img">
-                          <a href="assets/images/maserati/maserati_ghibli-bl-1.jpg"><img src="/sv-rentacar/storage/images/マセラッティ車両2.png" alt=""></a>
-                          <div class="rentacar-box__imgs">
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-bl-2.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-bl-2.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-bl-3.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-bl-3.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-bl-4.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-bl-4.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-bl-5.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-bl-5.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-bl-6.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-bl-6.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_ghibli-bl-7.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-bl-7.jpg" alt=""></a>
-                          </div>
-                        </div>
-                        <div class="rentacar-box__note">
-                          <table class="rentacar-box__tbl">
-                            <tbody><tr>
-                              <th>モデル名</th>
-                              <td>ギブリ（ブルー）</td>
-                            </tr>
-                            <tr>
-                              <th>当日返却プラン</th>
-                              <td>29,800円</td>
-                            </tr>
-                            <tr>
-                              <th class="rentacar-box__bold--red">24時間料金</th>
-                              <td class="rentacar-box__bold--black">49,800円</td>
-                            </tr>
-                            <tr>
-                              <th>weekly／monthly</th>
-                              <td>278,880円／1,045,800円</td>
-                            </tr>
-                          </tbody></table>
-                          <p class="rentacar-box__tap">Car SPEC</p>
-                          <div class="rentacar-box__toggle">
-                            <table class="rentacar-box__tbl">
-                                <tbody><tr><!--形状/ハンドルにfirst-childを適用しないため--></tr>
-                              <tr>
-                                <th>カラー／定員／ハンドル</th>
-                                <td>ブルー／5名／左</td>
-                              </tr>
-                              <tr>
-                                <th>排気量／燃料</th>
-                                <td>2,980cc／ハイオク</td>
-                              </tr>
-                              <tr>
-                                <th colspan="2">サイズ（全長×全幅×全高）<br>4,970×1,940×1,480mm</th>
-                              </tr>
-                              <tr>
-                                <th colspan="2">保険免責金額<br>対物：50,000円　車両：100,000円</th>
-                              </tr>
-                              <tr>
-                                <th colspan="2">NOC(ノンオペレーションチャージ)<br>自走可能：80,000円　自走不可能：160,000円</th>
-                              </tr>
-                              <tr>
-                                <th colspan="2">備考<br>年式：2015年　装備：純正ナビ、ETC、バックカメラ、クルーズコントロール、シートヒーター、ドライブレコーダー、レーダー探知機</th>
-                              </tr>
-                            </tbody></table>
-                          </div>
-                        </div>
-                      </div>
-                                        
-                      <div id="levante-gs" class="rentacar-box__item">
-                        <div class="rentacar-box__img">
-                          <a href="assets/images/maserati/maserati_levante-gs-1.jpg"><img src="/sv-rentacar/storage/images/マセラッティ車両3.png" alt="レヴァンテ グランスポーツ"></a>
-                          <div class="rentacar-box__imgs">
-                            <a href="/sv-rentacar/assets/images/maserati_levante-gs-2.jpg"><img src="/sv-rentacar/assets/images/maserati_levante-gs-2.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_levante-gs-3.jpg"><img src="/sv-rentacar/assets/images/maserati_levante-gs-3.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_levante-gs-4.jpg"><img src="/sv-rentacar/assets/images/maserati_levante-gs-4.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_levante-gs-5.jpg"><img src="/sv-rentacar/assets/images/maserati_levante-gs-5.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_levante-gs-6.jpg"><img src="/sv-rentacar/assets/images/maserati_levante-gs-6.jpg" alt=""></a>
-                            <a href="/sv-rentacar/assets/images/maserati_levante-gs-7.jpg"><img src="/sv-rentacar/assets/images/maserati_levante-gs-7.jpg" alt=""></a>
-                          </div>
-                        </div>
-                        <div class="rentacar-box__note">
-                          <table class="rentacar-box__tbl">
-                            <tbody><tr>
-                              <th>モデル名</th>
-                              <td><span class="levante">レヴァンテ グランスポーツ</span></td>
-                            </tr>
-                            <tr>
-                              <th>当日返却プラン</th>
-                              <td>29,800円</td>
-                            </tr>
-                            <tr>
-                              <th class="rentacar-box__bold--red">24時間料金</th>
-                              <td class="rentacar-box__bold--black">49,800円</td>
-                            </tr>
-                            <tr>
-                              <th>weekly／monthly</th>
-                              <td>278,880円／1,045,800円</td>
-                            </tr>
-                          </tbody></table>
-                          <p class="rentacar-box__tap">Car SPEC</p>
-                          <div class="rentacar-box__toggle">
-                            <table class="rentacar-box__tbl">
-                                <tbody><tr><!--形状/ハンドルにfirst-childを適用しないため--></tr>
-                              <tr>
-                                <th>カラー／定員／ハンドル</th>
-                                <td>ホワイト／5名／右</td>
-                              </tr>
-                              <tr>
-                                <th>排気量／燃料</th>
-                                <td>2,970cc／ハイオク</td>
-                              </tr>
-                              <tr>
-                                <th colspan="2">サイズ（全長×全幅×全高）<br>5,020×1,980×1,680mm</th>
-                              </tr>
-                              <tr>
-                                <th colspan="2">保険免責金額<br>対物：50,000円　車両：100,000円</th>
-                              </tr>
-                              <tr>
-                                <th colspan="2">NOC(ノンオペレーションチャージ)<br>自走可能：80,000円　自走不可能：160,000円</th>
-                              </tr>
-                              <tr>
-                                <th colspan="2">備考<br>年式：2021年　装備：純正ナビ、ETC，全方位カメラ、カーボンインテリア、Harman/Kardonオーディオ、クルーズコントロール、シートヒーター、サンルーフ</th>
-                              </tr>
-                            </tbody></table>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </section>
       </div>
+    <script src="main.js"></script>
     </body>
   
 </html>

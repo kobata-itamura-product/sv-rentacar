@@ -171,6 +171,7 @@
                                     <li><a href="#menu">料金表・メニュー</a></li>
                                     <li><a href="#howto">ご利用方法・規約</a></li>
                                     <li><a href="#about">SV RENTACARとは</a></li>
+                                    <li><a href=company_profile.blade.php>会社概要</a></li>
                                     <!--li class="inquirybtn"><a href="#mailform">お問い合わせ・お申込み</a></li-->
                             </ul>
             </div>

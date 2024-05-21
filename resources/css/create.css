@@ -2,18 +2,26 @@
         position: relative;
     }
 
-    .first_img p img {
+    .option1 img {
         position: absolute;
-        top: -50px;
-        right: 450px;
+        top: 16px;
+        right: 380px;
         width: 50px;
         height: 50px;
     }
 
-    .first_img p2 img {
+    .option2 img {
         position: absolute;
         top: 16px;
-        right: 560px;
+        right: 440px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .new img {
+        position: absolute;
+        top: 16px;
+        right: 500px;
         width: 50px;
         height: 50px;
     }
@@ -30,3 +38,14 @@
     .rentacar-box__imgs img{
         width: 25%;
     }
+
+    /*.icon1 {
+    }
+
+    .icon2 {
+        top: 20px;
+    }
+
+    .icon3 {
+        top: 40px;
+    }*/
