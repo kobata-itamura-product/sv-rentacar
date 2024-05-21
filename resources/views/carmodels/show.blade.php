@@ -308,9 +308,51 @@
                         <div class="rentacar-box__img">
                           <div class="first_img">
                             <img src="/sv-rentacar/storage/images/マセラッティ車両.png" alt="">
-                            <div class="option1" id="option1"><img src="/sv-rentacar/assets/images/360カメラ.png" alt=""></div>
+                            <?php
+                              $option1 = $pdo->prepare("SELECT camera360 from carmodels where maker_id = :maker_id");
+                              $option1->bindValue(':maker_id', $selectedMenuId, PDO::PARAM_INT);
+                              $option1->execute();
+                              $option1Row = $option1->fetch(PDO::FETCH_ASSOC);
+                              //var_dump($option1Row);
+                              if ($option1Row) { 
+                                $camera360 = $option1Row['camera360'] ;
+                                $camera360 = 1 ?>
+                                <div class="option1" id="option1"><img src="/sv-rentacar/assets/images/360カメラ.png" alt=""></div><?php
+                              } else {
+                              // 非表示
+                              }
+                            ?>
+                            <?php
+                              $option2 = $pdo->prepare("SELECT back_monitor from carmodels where maker_id = :maker_id");
+                              $option2->bindValue(':maker_id', $selectedMenuId, PDO::PARAM_INT);
+                              $option2->execute();
+                              $option2Row = $option2->fetch(PDO::FETCH_ASSOC);
+                              //var_dump($option1Row);
+                              if ($option2Row) { 
+                                $back_monitor = $option2Row['back_monitor'] ;
+                                $back_monitor = 1 ?>
+                                <div class="option2" id="option2"><img src="/sv-rentacar/assets/images/バックモニター.png" alt=""></div><?php
+                              } else {
+                              // 非表示
+                              }
+                            ?>
+                            <?php
+                              $new = $pdo->prepare("SELECT new from carmodels where maker_id = :maker_id");
+                              $new->bindValue(':maker_id', $selectedMenuId, PDO::PARAM_INT);
+                              $new->execute();
+                              $newRow = $new->fetch(PDO::FETCH_ASSOC);
+                              //var_dump($option1Row);
+                              if ($newRow) { 
+                                $new = $newRow['new'] ;
+                                $new = 1 ?>
+                                <div class="new" id="new"><img src="/sv-rentacar/assets/images/NEW.png" alt=""></div><?php
+                              } else {
+                              // 非表示
+                              }
+                            ?>
+                            <!--<div class="option1" id="option1"><img src="/sv-rentacar/assets/images/360カメラ.png" alt=""></div>
                             <div class="option2" id="option2"><img src="/sv-rentacar/assets/images/バックモニター.png" alt=""></div>
-                            <div class="new" id="new"><img src="/sv-rentacar/assets/images/NEW.png" alt=""></div>
+                            <div class="new" id="new"><img src="/sv-rentacar/assets/images/NEW.png" alt=""></div>-->
                           </div>
                           <div class="rentacar-box__imgs">
                             <a href="/sv-rentacar/assets/images/maserati_ghibli-wl-2.jpg"><img src="/sv-rentacar/assets/images/maserati_ghibli-wl-2.jpg" alt=""></a>
