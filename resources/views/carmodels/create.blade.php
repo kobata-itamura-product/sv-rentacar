@@ -120,6 +120,47 @@
       
     }*/
   }
+  
+  $servername = "127.0.0.1";
+  $username = "root";
+  $password = "";
+  $dbname = "sv_rentacar";
+
+  // DB接続
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  // データベースへの接続を確認
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+    // アップロードされた画像を保存するフォルダ
+  $target_dir = "uploads/";
+
+  // フォームから送信された画像ファイルを処理
+  if(isset($_POST["submit"])) {
+      // ファイルの数を取得
+      $countfiles = count($_FILES['file']['name']);
+
+      // すべてのファイルを処理
+      for($i=0;$i<$countfiles;$i++) {
+          // ファイル名を取得
+          $filename = $_FILES['file']['name'][$i];
+
+          if ($filename != "") {
+
+              // ファイルをアップロードする
+              move_uploaded_file($_FILES['file']['tmp_name'][$i],$target_dir.$filename);
+
+              // データベースにファイル名を挿入する
+              $sql = "INSERT INTO images (file_name) VALUES ('$filename')";
+              if ($conn->query($sql) === TRUE) {
+                // echo "登録完了";
+              }
+          }
+      }
+  }
+
 ?>
 
 
@@ -272,7 +313,7 @@
                                 <input type="radio" name="new" value="0" onclick="hihyoji3()">非表示</div>
                               <div class="option1" id="option1"><img src="/sv-rentacar/assets/images/360カメラ.png" alt=""></div>
                               <div class="option2" id="option2"><img src="/sv-rentacar/assets/images/バックモニター.png" alt=""></div>
-                              <div class="new" id="new"><img src="/sv-rentacar/assets/images/NEW.png" alt=""></div>
+                              <div class="new1" id="new1"><img src="/sv-rentacar/assets/images/NEW.png" alt=""></div>
                               <script>
                               function hyoji() {
                                   document.getElementById("option1").style.display="block";
@@ -289,11 +330,11 @@
                                   document.getElementById("option2").style.display="none";
                               }
                               function hyoji3() {
-                                  document.getElementById("new").style.display="block";
+                                  document.getElementById("new1").style.display="block";
                               }
 
                               function hihyoji3() {
-                                  document.getElementById("new").style.display="none";
+                                  document.getElementById("new1").style.display="none";
                               }
                               </script>
                             </div>

@@ -227,7 +227,7 @@
                   下記メーカーロゴマークよりお進みください。</p>
                 <ul class="flexbox FB-Brand">
                   <li class="brand-teaser">
-                    <a href="/sv-rentacar/resources/views/show.blade.php"><img src='/sv-rentacar/storage/images/maker_button/マセラッティ.png'></a>
+                    <a href="/sv-rentacar/resources/views/carmodels/show.blade.php"><img src='/sv-rentacar/storage/images/maker_button/マセラッティ.png'></a>
                   </li>
                   <li class="brand-teaser">
                     <a href="#porsche"><img src='/sv-rentacar/storage/images/maker_button2/PORSCHEロゴ.png'></a>

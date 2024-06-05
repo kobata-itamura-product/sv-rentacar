@@ -140,8 +140,8 @@
       $pdo = connect(); // connect関数はあなたのデータベース接続をセットアップする関数です
 
       // ステートメント
-      $modelinfo = $pdo->prepare("SELECT * FROM carmodels WHERE maker_id = :maker_id");
-      $modelinfo->bindValue(':maker_id', $selectedMenuId, PDO::PARAM_INT);
+      $modelinfo = $pdo->prepare("SELECT * FROM carmodels WHERE id = :id");
+      $modelinfo->bindValue(':id', PDO::PARAM_INT);
       //$modelinfo = $pdo -> query($sql);
       
 
@@ -309,43 +309,43 @@
                           <div class="first_img">
                             <img src="/sv-rentacar/storage/images/マセラッティ車両.png" alt="">
                             <?php
-                              $option1 = $pdo->prepare("SELECT camera360 from carmodels where maker_id = :maker_id");
-                              $option1->bindValue(':maker_id', $selectedMenuId, PDO::PARAM_INT);
+                              $option1 = $pdo->prepare("SELECT camera360 from carmodels where id = :id");
+                              $option1->bindValue(':id', PDO::PARAM_INT);
                               $option1->execute();
                               $option1Row = $option1->fetch(PDO::FETCH_ASSOC);
                               //var_dump($option1Row);
                               if ($option1Row) { 
                                 $camera360 = $option1Row['camera360'] ;
-                                $camera360 = 1 ?>
+                                $camera360 == 1; ?>
                                 <div class="option1" id="option1"><img src="/sv-rentacar/assets/images/360カメラ.png" alt=""></div><?php
                               } else {
                               // 非表示
                               }
                             ?>
                             <?php
-                              $option2 = $pdo->prepare("SELECT back_monitor from carmodels where maker_id = :maker_id");
-                              $option2->bindValue(':maker_id', $selectedMenuId, PDO::PARAM_INT);
+                              $option2 = $pdo->prepare("SELECT back_monitor from carmodels where id = :id");
+                              $option2->bindValue(':id', PDO::PARAM_INT);
                               $option2->execute();
                               $option2Row = $option2->fetch(PDO::FETCH_ASSOC);
-                              //var_dump($option1Row);
-                              if ($option2Row) { 
+                              //var_dump($option2Row);
+                              if ($option2Row) {
                                 $back_monitor = $option2Row['back_monitor'] ;
-                                $back_monitor = 1 ?>
+                                $back_monitor == 1; ?>
                                 <div class="option2" id="option2"><img src="/sv-rentacar/assets/images/バックモニター.png" alt=""></div><?php
                               } else {
                               // 非表示
                               }
                             ?>
                             <?php
-                              $new = $pdo->prepare("SELECT new from carmodels where maker_id = :maker_id");
-                              $new->bindValue(':maker_id', $selectedMenuId, PDO::PARAM_INT);
-                              $new->execute();
-                              $newRow = $new->fetch(PDO::FETCH_ASSOC);
+                              $new1 = $pdo->prepare("SELECT new from carmodels where id = :id");
+                              $new1->bindValue(':id', PDO::PARAM_INT);
+                              $new1->execute();
+                              $new1Row = $new1->fetch(PDO::FETCH_ASSOC);
                               //var_dump($option1Row);
-                              if ($newRow) { 
-                                $new = $newRow['new'] ;
-                                $new = 1 ?>
-                                <div class="new" id="new"><img src="/sv-rentacar/assets/images/NEW.png" alt=""></div><?php
+                              if ($new1Row) { 
+                                $new = $new1Row['new'] ;
+                                $new == 1; ?>
+                                <div class="new1" id="new1"><img src="/sv-rentacar/assets/images/NEW.png" alt=""></div><?php
                               } else {
                               // 非表示
                               }
@@ -379,6 +379,15 @@
                           $handle = $record['handle'];
                           $displacement = $record['displacement'];
                           $fuel = $record['fuel'];
+                          $size_l = $record['size_l'];
+                          $size_w = $record['size_w'];
+                          $size_h = $record['size_h'];
+                          $insurance_deductible_property = $record['insurance_deductible_property'];
+                          $insurance_deductible_vehicle = $record['insurance_deductible_vehicle'];
+                          $noc_self_propelled = $record['noc_self_propelled'];
+                          $noc_not_self_drive = $record['noc_not_self_drive'];
+                          $model_year = $record['model_year'];
+                          $remarks = $record['remarks'];
                           echo $img1;
                           echo $img2;
                           echo $img3;
@@ -386,18 +395,69 @@
                           echo $img5;
                           echo $img6;
                           echo $img7;
-                          echo 'モデル名：'.$model_name;
+                          /*echo 'モデル名：'.$model_name;
                           echo '車体色：'.$color;
                           echo '24時間料金：'.$price_24h;
                           echo '定員：'.$capacity;
                           echo 'ハンドル：'.$handle;
                           echo '排気量：'.$displacement;
                           echo '燃料：'.$fuel;
+                          echo '全長：'.$size_l;
+                          echo '全幅：'.$size_w;
+                          echo '全高：'.$size_h;
+                          echo '保険免責金額（対物）：'.$insurance_deductible_property;
+                          echo '保険免責金額（車両）：'.$insurance_deductible_vehicle;
+                          echo 'ノンオペレーションチャージ（自走可能）：'.$noc_self_propelled;
+                          echo 'ノンオペレーションチャージ（自走不可）：'.$noc_not_self_drive;
+                          echo '年式：'.$model_year;
+                          echo '備考：'.$remarks;*/
                         }
                         //catch(PDOException $e) {
                         //echo "エラーメッセージ : " . $e -> getMessage();
                         //}
-                        ?>  
+                        ?>
+                        <div class="model_name"><?php
+                          echo 'モデル名：'.$model_name; ?>
+                        </div>
+                        <div class="color"><?php
+                          echo '車体色：'.$color; ?>
+                        </div>
+                        <div class="price_24h"><?php
+                          echo '24時間料金：'.$price_24h; ?>
+                        </div>
+                        <div class="capacity"><?php
+                          echo '定員：'.$capacity; ?>
+                        </div>
+                        <div class="handle"><?php
+                          echo 'ハンドル：'.$handle; ?>
+                        </div>
+                        <div class="displacement"><?php
+                          echo '排気量：'.$displacement; ?>
+                        </div>
+                        <div class="fuel"><?php
+                          echo '燃料：'.$fuel; ?>
+                        </div>
+                        <div class="size"><?php
+                          echo '全長：'.$size_l.'/全幅：'.$size_w.'/全高：'.$size_h; ?>
+                        </div>
+                        <div class="insurance_deductible_property"><?php
+                          echo '保険免責金額（対物）：'.$insurance_deductible_property; ?>
+                        </div>
+                        <div class="insurance_deductible_vehicle"><?php
+                          echo '保険免責金額（車両）：'.$insurance_deductible_vehicle; ?>
+                        </div>
+                        <div class="noc_self_propelled"><?php
+                          echo 'ノンオペレーションチャージ（自走可能）：'.$noc_self_propelled; ?>
+                        </div>
+                        <div class="noc_not_self_drive"><?php
+                          echo 'ノンオペレーションチャージ（自走不可）：'.$noc_not_self_drive; ?>
+                        </div>
+                        <div class="model_year"><?php
+                          echo '年式：'.$model_year; ?>
+                        </div>
+                        <div class="remarks"><?php
+                          echo '備考：'.$remarks; ?>
+                        </div>
                       </div>  
                     </div>               
                   </section>
